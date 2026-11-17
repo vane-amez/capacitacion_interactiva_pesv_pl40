@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divulgación PESV (PL40) - Seguridad Vial para Todos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        /* Animaciones suaves */
+        .fade-in {
+            animation: fadeIn 0.35s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Ocultar barra de scroll horizontal en navegación móvil pero permitir desplazamiento */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- ENCABEZADO TIPO DASHBOARD DE SEGURIDAD VIAL -->
+    <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-40 no-print border-b-4 border-amber-400">
+        <div class="max-w-6xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <!-- Título e Identidad -->
+                <div class="flex items-center gap-3">
+                    <div class="bg-amber-400 text-slate-900 p-2.5 rounded-xl shadow-md flex-shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-emerald-500/20 text-emerald-300 text-xs font-bold px-2.5 py-0.5 rounded-full border border-emerald-500/30 uppercase tracking-wider">Documento PL40</span>
+                            <span class="text-slate-400 text-xs hidden sm:inline">• Cultura de Cuidado Vial</span>
+                        </div>
+                        <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white mt-0.5">
+                            Plan Estratégico de Seguridad Vial <span class="text-amber-400">(PESV)</span>
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- Indicador de Progreso -->
+                <div class="bg-slate-800/90 border border-slate-700 rounded-xl p-3 sm:min-w-[260px]">
+                    <div class="flex justify-between items-center text-xs font-semibold mb-1.5">
+                        <span class="text-slate-300">Tu avance en la divulgación</span>
+                        <span id="progress-text" class="text-amber-400 font-bold text-sm">17%</span>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2.5 overflow-hidden">
+                        <div id="progress-bar" class="bg-gradient-to-r from-amber-400 to-emerald-400 h-2.5 rounded-full transition-all duration-500" style="width: 17%"></div>
+                    </div>
+                    <p id="progress-subtitle" class="text-[11px] text-slate-400 mt-1">1 de 6 secciones exploradas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENÚ DE NAVEGACIÓN POR MÓDULOS -->
+        <nav class="bg-slate-800 border-t border-slate-700/80">
+            <div class="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
+                <div id="nav-tabs" class="flex overflow-x-auto no-scrollbar py-2 gap-1.5 sm:gap-2">
+                    <!-- Las pestañas se generan dinámicamente con JS -->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        
+        <!-- Banner de Bienvenida Contextual -->
+        <div id="welcome-banner" class="bg-gradient-to-r from-blue-900 via-slate-800 to-slate-900 rounded-2xl p-5 sm:p-6 text-white mb-6 shadow-md border border-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 no-print">
+            <div class="space-y-1">
+                <h2 class="text-lg sm:text-xl font-bold flex items-center gap-2">
+                    <span>🚦</span> ¡Tu vida y la de los demás es nuestra prioridad!
+                </h2>
+                <p class="text-sm text-slate-300 max-w-3xl leading-relaxed">
+                    Esta guía resume de manera sencilla nuestro <strong>PESV (PL40)</strong> y sus anexos. Recorre los 5 módulos interactivos y completa la trivia final para generar tu constancia de participación.
+                </p>
+            </div>
+            <button onclick="nextModule()" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold text-sm px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2 flex-shrink-0 self-end sm:self-center">
+                <span>Siguiente módulo</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+
+        <!-- CONTENEDOR DINÁMICO DE MÓDULOS -->
+        <div id="module-container" class="fade-in">
+            <!-- El contenido del módulo activo se renderiza aquí -->
+        </div>
+
+        <!-- BOTONES DE NAVEGACIÓN INFERIOR -->
+        <div class="mt-8 pt-6 border-t border-slate-200 flex justify-between items-center no-print">
+            <button id="btn-prev" onclick="prevModule()" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 font-semibold text-sm hover:bg-slate-50 transition flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                Anterior
+            </button>
+            <span id="step-indicator" class="text-xs sm:text-sm font-semibold text-slate-500">Módulo 1 de 6</span>
+            <button id="btn-next" onclick="nextModule()" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-sm hover:bg-slate-800 transition flex items-center gap-2 shadow-sm">
+                Continuar
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800 no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+            <div>
+                <p class="font-semibold text-slate-200">Divulgación Interna - Plan Estratégico de Seguridad Vial (PL40)</p>
+                <p class="mt-0.5">Incluye lineamientos de Protocolo P369 (Fatiga), PON y Anexo 4 (Práctica Segura Siniestro Vial).</p>
+            </div>
+            <div class="flex items-center gap-2 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-slate-300 font-medium">Compromiso Cero Siniestros</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE DETALLES / MENSAJES (Sin usar alert) -->
+    <div id="custom-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 fade-in">
+            <div class="flex justify-between items-start mb-4">
+                <div class="flex items-center gap-3">
+                    <span id="modal-icon" class="text-2xl bg-amber-100 p-2 rounded-xl">💡</span>
+                    <h3 id="modal-title" class="text-lg font-bold text-slate-900">Título</h3>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div id="modal-body" class="text-sm text-slate-600 space-y-3 leading-relaxed"></div>
+            <div class="mt-6 flex justify-end">
+                <button onclick="closeModal()" class="bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // ESTADO DE LA APLICACIÓN
+        // ==========================================
+        const state = {
+            currentTab: 0,
+            visitedTabs: new Set([0]),
+            checklist: {
+                doc: false,
+                llantas: false,
+                luces: false,
+                descanso: false,
+                ruta: false,
+                cinturon: false
+            },
+            emergencyStep: 0,
+            quizAnswers: {},
+            quizSubmitted: false,
+            workerName: '',
+            workerRole: 'R96 - Conductor Operario'
+        };
+
+        // Definición de las 6 pestañas (5 módulos + Evaluación)
+        const tabs = [
+            { id: 0, short: "1. Compromiso PESV", title: "¿Qué es el PESV y cuál es nuestro compromiso?", icon: "🏛️" },
+            { id: 1, short: "2. Los 5 Pilares", title: "Los 5 Pilares de Prevención (Riesgos Críticos)", icon: "🛡️" },
+            { id: 2, short: "3. Rutina Segura", title: "Tu Rutina Segura en la Operación", icon: "🚛" },
+            { id: 3, short: "4. Emergencias", title: "¿Qué hacer en caso de emergencia o siniestro?", icon: "🚨" },
+            { id: 4, short: "5. Mejora Continua", title: "Seguimiento, Mejora y Participación", icon: "📊" },
+            { id: 5, short: "6. Trivia y Certificado", title: "Evaluación Rápida y Constancia", icon: "🏆" }
+        ];
+
+        // Datos de los 5 Pilares de Prevención (Módulo 2)
+        const pillarsData = [
+            {
+                id: 'velocidad',
+                title: '1. Gestión de la Velocidad',
+                icon: '⏱️',
+                color: 'amber',
+                badge: 'Factor Crítico #1',
+                summary: 'Respetar los límites salva vidas y te da tiempo para reaccionar ante imprevistos.',
+                details: [
+                    'Respeta siempre los límites señalizados en vía pública y dentro de las instalaciones o proyectos de la empresa.',
+                    'Adapta tu velocidad según el clima (lluvia, neblina), el estado de la vía y el tipo de carga.',
+                    'Recuerda: a mayor velocidad, mayor distancia de frenado y mayor gravedad en caso de impacto.'
+                ]
+            },
+            {
+                id: 'fatiga',
+                title: '2. Prevención de la Fatiga (Protocolo P369)',
+                icon: '😴',
+                color: 'blue',
+                badge: 'Protocolo P369',
+                summary: 'Conducir cansado es tan peligroso como conducir bajo efectos del alcohol.',
+                details: [
+                    'Cumple estrictamente el <strong>Protocolo P369</strong>: garantiza tus horas de sueño reparador antes de iniciar turno.',
+                    'Realiza pausas activas cada 2 horas de conducción continua (estira, hidrátate y oxigénate).',
+                    'Si sientes microsueños, pesadez en los párpados o bostezos frecuentes: <strong>¡DETENTE EN UN LUGAR SEGURO!</strong> Repórtalo de inmediato sin temor a represalias.'
+                ]
+            },
+            {
+                id: 'distraccion',
+                title: '3. Prevención de la Distracción',
+                icon: '📵',
+                color: 'rose',
+                badge: 'Cero Celular al Volante',
+                summary: 'Un segundo mirando el celular a 60 km/h equivale a recorrer 17 metros a ciegas.',
+                details: [
+                    'Está estrictamente prohibido manipular teléfonos celulares, enviar mensajes o revisar redes mientras conduces (incluso en semáforos).',
+                    'Programa tu ruta o GPS antes de iniciar la marcha.',
+                    'Mantén tus ojos en la vía, tus manos en el volante y tu mente 100% enfocada en la conducción.'
+                ]
+            },
+            {
+                id: 'alcohol',
+                title: '4. Cero Tolerancia: Alcohol y Sustancias',
+                icon: '🚫',
+                color: 'red',
+                badge: 'Cero Tolerancia',
+                summary: 'Politica absoluta de cero consumo de alcohol o sustancias psicoactivas.',
+                details: [
+                    'Cero tolerancia al consumo de alcohol, drogas o sustancias psicoactivas antes o durante la jornada laboral.',
+                    'Si estás tomando medicamentos formulados que causen somnolencia, infórmalo al área de SST / Líder PESV antes de operar.',
+                    'La empresa realiza pruebas preventivas de alcoholimetría y control.'
+                ]
+            },
+            {
+                id: 'vulnerables',
+                title: '5. Protección a Actores Vulnerables',
+                icon: '🚶‍♂️',
+                color: 'emerald',
+                badge: 'Prioridad en la Vía',
+                summary: 'Peatones, ciclistas y motociclistas no tienen carrocería que los proteja.',
+                details: [
+                    'Mantén una distancia lateral mínima de <strong>1.5 metros</strong> al adelantar ciclistas o motociclistas.',
+                    'Cede siempre el paso a peatones en cebras, intersecciones y zonas escolares o residenciales.',
+                    'Verifica tus <strong>puntos ciegos</strong> antes de girar o dar reversa; apoya las maniobras con señalero si es necesario.'
+                ]
+            }
+        ];
+
+        // Pasos de emergencia (Módulo 4)
+        const emergencySteps = [
+            {
+                step: "Paso 1: Proteger y Asegurar (P.A.S.)",
+                icon: "🦺",
+                desc: "Mantén la calma. Enciende luces de estacionamiento, apaga el motor del vehículo si es seguro hacerlo, ponte tu chaleco reflectivo y ubica los triángulos o conos de seguridad a distancia prudente para evitar otro choque."
+            },
+            {
+                step: "Paso 2: Avisar y Activar el PON",
+                icon: "📞",
+                desc: "Llama inmediatamente a la línea única de emergencias (123), a tu supervisor directo y al Líder del PESV siguiendo el Plan Operativo Normalizado (PON). Indica ubicación exacta, si hay heridos y vehículos involucrados."
+            },
+            {
+                step: "Paso 3: Socorrer (Primer Respondiente)",
+                icon: "🩹",
+                desc: "Verifica el estado de los involucrados sin mover a los heridos graves (a menos que haya peligro inminente de incendio o explosión). Brinda apoyo básico como Primer Respondiente mientras llega la ambulancia."
+            },
+            {
+                step: "Paso 4: Anexo 4 - Práctica Segura en Siniestro",
+                icon: "📸",
+                desc: "Aplica el Anexo 4: No abandones el lugar, no discutas con terceros, toma registro fotográfico panorámico y de detalle antes de mover los vehículos (si la autoridad o norma de choque simple lo permite) y espera a Tránsito."
+            },
+            {
+                step: "Paso 5: Reporte e Investigación Interna",
+                icon: "📋",
+                desc: "Participa en la investigación interna del siniestro vial. El objetivo NO es buscar culpables, sino identificar las causas raíz para mejorar nuestros controles y evitar que vuelva a ocurrir."
+            }
+        ];
+
+        // Preguntas de la Trivia (Módulo 6)
+        const quizQuestions = [
+            {
+                q: "1. Según el Protocolo P369 de prevención de la fatiga, ¿qué debes hacer si sientes sueño o microsueños mientras conduces?",
+                options: [
+                    "Tomar café, subir el volumen de la radio y acelerar para llegar rápido.",
+                    "Detener el vehículo en un lugar seguro, descansar y reportar la novedad inmediatamente.",
+                    "Abrir la ventana para que entre aire frío y seguir conduciendo."
+                ],
+                correct: 1,
+                explanation: "¡Correcto! Ningún horario vale más que tu vida. El Protocolo P369 indica detenerse en un lugar seguro y reportar."
+            },
+            {
+                q: "2. ¿Cuándo se debe realizar la inspección preoperacional del vehículo o equipo?",
+                options: [
+                    "Una vez a la semana los lunes por la mañana.",
+                    "Solo cuando el vehículo presenta algún ruido extraño.",
+                    "Todos los días antes de iniciar la operación o desplazamiento laboral."
+                ],
+                correct: 2,
+                explanation: "¡Exacto! La inspección preoperacional es diaria y obligatoria antes de encender e iniciar la marcha."
+            },
+            {
+                q: "3. Respecto al consumo de alcohol y sustancias psicoactivas en la operación, la política de la empresa establece:",
+                options: [
+                    "Cero tolerancia antes y durante la jornada laboral.",
+                    "Se permite una cerveza durante el almuerzo si no se conduce carretera nacional.",
+                    "Solo aplica para conductores de vehículos pesados."
+                ],
+                correct: 0,
+                explanation: "¡Muy bien! Existe política de Cero Tolerancia para todo el personal involucrado en desplazamientos laborales."
+            },
+            {
+                q: "4. ¿Cuál es la distancia lateral mínima recomendada al adelantar a un ciclista o motociclista (actores vulnerables)?",
+                options: [
+                    "50 centímetros.",
+                    "1.5 metros como mínimo, reduciendo la velocidad.",
+                    "No importa la distancia si se toca la bocina."
+                ],
+                correct: 1,
+                explanation: "¡Correcto! Debemos proteger a los actores viales vulnerables manteniendo al menos 1.5 metros de distancia lateral."
+            },
+            {
+                q: "5. En caso de un siniestro vial, según el PON y el Anexo 4 (Práctica Segura), ¿cuál es el orden correcto de actuación?",
+                options: [
+                    "Discutir quién tuvo la culpa, mover el carro rápido e irse.",
+                    "Proteger el área (señalizar), Avisar a emergencias/empresa y Socorrer (Primer Respondiente).",
+                    "Llamar a un amigo antes de señalizar la vía."
+                ],
+                correct: 1,
+                explanation: "¡Excelente! Siempre aplicamos el principio P.A.S. (Proteger, Avisar, Socorrer) y los pasos del Anexo 4."
+            }
+        ];
+
+        // ==========================================
+        // FUNCIONES DE RENDERIZADO Y NAVEGACIÓN
+        // ==========================================
+        function init() {
+            renderNavTabs();
+            renderModule(0);
+            updateProgress();
+        }
+
+        function renderNavTabs() {
+            const navContainer = document.getElementById('nav-tabs');
+            navContainer.innerHTML = tabs.map(tab => {
+                const isActive = state.currentTab === tab.id;
+                const isVisited = state.visitedTabs.has(tab.id);
+                return `
+                    <button onclick="switchTab(${tab.id})" 
+                        class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all
+                        ${isActive 
+                            ? 'bg-amber-400 text-slate-900 shadow-sm font-bold' 
+                            : isVisited 
+                                ? 'bg-slate-700/70 text-slate-200 hover:bg-slate-700' 
+                                : 'text-slate-400 hover:text-white hover:bg-slate-700/40'}">
+                        <span>${tab.icon}</span>
+                        <span>${tab.short}</span>
+                        ${isVisited && !isActive ? '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>' : ''}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function switchTab(tabId) {
+            state.currentTab = tabId;
+            state.visitedTabs.add(tabId);
+            renderNavTabs();
+            renderModule(tabId);
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextModule() {
+            if (state.currentTab < tabs.length - 1) {
+                switchTab(state.currentTab + 1);
+            }
+        }
+
+        function prevModule() {
+            if (state.currentTab > 0) {
+                switchTab(state.currentTab - 1);
+            }
+        }
+
+        function updateProgress() {
+            const total = tabs.length;
+            const visited = state.visitedTabs.size;
+            const percent = Math.round((visited / total) * 100);
+
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+            document.getElementById('progress-text').textContent = `${percent}%`;
+            document.getElementById('progress-subtitle').textContent = `${visited} de ${total} secciones exploradas`;
+
+            document.getElementById('step-indicator').textContent = `Módulo ${state.currentTab + 1} de ${total}`;
+            document.getElementById('btn-prev').disabled = state.currentTab === 0;
+            
+            const btnNext = document.getElementById('btn-next');
+            if (state.currentTab === total - 1) {
+                btnNext.classList.add('hidden');
+            } else {
+                btnNext.classList.remove('hidden');
+            }
+        }
+
+        function showModal(title, icon, htmlContent) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-icon').textContent = icon;
+            document.getElementById('modal-body').innerHTML = htmlContent;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        // ==========================================
+        // RENDERIZADORES POR MÓDULO
+        // ==========================================
+        function renderModule(tabId) {
+            const container = document.getElementById('module-container');
+            container.classList.remove('fade-in');
+            void container.offsetWidth; // trigger reflow
+            container.classList.add('fade-in');
+
+            switch (tabId) {
+                case 0: container.innerHTML = getModule1HTML(); break;
+                case 1: container.innerHTML = getModule2HTML(); break;
+                case 2: container.innerHTML = getModule3HTML(); break;
+                case 3: container.innerHTML = getModule4HTML(); break;
+                case 4: container.innerHTML = getModule5HTML(); break;
+                case 5: container.innerHTML = getModule6HTML(); break;
+            }
+        }
+
+        // MÓDULO 1: ¿Qué es el PESV y cuál es nuestro compromiso?
+        function getModule1HTML() {
+            return `
+                <div class="space-y-6">
+                    <!-- Cabecera del Módulo -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                        <span class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full">Módulo 1 • Fundamentos y Liderazgo</span>
+                        <h2 class="text-2xl font-extrabold text-slate-900 mt-2">¿Qué es el PESV (PL40) y cuál es nuestro compromiso?</h2>
+                        <p class="text-slate-600 mt-2 leading-relaxed">
+                            El <strong>Plan Estratégico de Seguridad Vial (PL40)</strong> es nuestra hoja de ruta con acciones, mecanismos y estrategias que todos debemos cumplir para prevenir siniestros en las vías, proteger la vida y cumplir con la normatividad colombiana vigente (Resolución 40595 de 2022 y Ley 1503 de 2011).
+                        </p>
+
+                        <!-- Tarjetas de Alcance y Política -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <div class="text-2xl mb-2">🎯</div>
+                                <h3 class="font-bold text-slate-900 text-sm">Alcance del Plan</h3>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                    Aplica a <strong>todos los trabajadores</strong>, contratistas, subcontratistas y visitantes que realicen desplazamientos laborales, ya sea en vehículos de la empresa, propios o terceros.
+                                </p>
+                            </div>
+                            <div class="bg-amber-50/70 p-4 rounded-xl border border-amber-200">
+                                <div class="text-2xl mb-2">📜</div>
+                                <h3 class="font-bold text-slate-900 text-sm">Política y Carta de Liderazgo</h3>
+                                <p class="text-xs text-slate-700 mt-1 leading-relaxed">
+                                    La Alta Dirección lidera con el ejemplo, asignando recursos y garantizando que la seguridad vial esté siempre por encima del afán operativo.
+                                </p>
+                            </div>
+                            <div class="bg-emerald-50/70 p-4 rounded-xl border border-emerald-200">
+                                <div class="text-2xl mb-2">🤝</div>
+                                <h3 class="font-bold text-slate-900 text-sm">Líder y Comité del PESV</h3>
+                                <p class="text-xs text-slate-700 mt-1 leading-relaxed">
+                                    Contamos con un <strong>Líder del PESV</strong> y un <strong>Comité de Seguridad Vial</strong> que diseñan, implementan y vigilan que estas medidas nos protejan cada día.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Corresponsabilidad -->
+                    <div class="bg-blue-900 text-white rounded-2xl p-6 shadow-md flex flex-col sm:flex-row items-center gap-5">
+                        <div class="bg-blue-800 p-4 rounded-2xl text-4xl flex-shrink-0">⚖️</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-amber-400">Principio de Corresponsabilidad</h3>
+                            <p class="text-sm text-blue-100 mt-1 leading-relaxed">
+                                La seguridad vial no es solo tarea de quien va al volante. Es un trabajo en equipo: la empresa entrega vehículos seguros, capacitación y tiempos adecuados; y tú te comprometes a respetar las normas, reportar fallas y cuidar tu estado físico y mental.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Perfiles de Cargo Clave (R96, R662, R790) -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <h3 class="text-lg font-extrabold text-slate-900">Perfiles de Cargo y Responsabilidades Clave</h3>
+                                <p class="text-xs text-slate-500">Haz clic en cada perfil para conocer sus requisitos específicos entregados en la divulgación:</p>
+                            </div>
+                            <span class="text-xs font-semibold bg-slate-100 text-slate-700 px-3 py-1 rounded-lg self-start">Perfiles Oficiales</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- R96 -->
+                            <button onclick="showModal('R96 - Conductor Operario', '🚛', '<p><strong>¿A quién aplica?</strong> Al personal contratado específicamente para la conducción y operación de vehículos de la organización.</p><ul class=\'list-disc pl-5 space-y-1.5 mt-2\'><li>Contar con licencia de conducción vigente y acorde a la categoría del vehículo.</li><li>Aprobar exámenes médicos ocupacionales y pruebas psicosensométricas.</li><li>Ejecutar diariamente la inspección preoperacional y el Protocolo P369 de fatiga.</li><li>Conocer y aplicar el PON y el Anexo 4 en caso de siniestro vial.</li></ul>')" 
+                                class="text-left p-5 rounded-xl border-2 border-slate-200 hover:border-amber-400 hover:bg-amber-50/30 transition group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="bg-slate-900 text-amber-400 text-xs font-extrabold px-2.5 py-1 rounded-lg">Perfil R96</span>
+                                    <span class="text-xs text-blue-600 font-semibold group-hover:underline">Ver detalle →</span>
+                                </div>
+                                <h4 class="font-bold text-slate-900 text-base">Conductor Operario</h4>
+                                <p class="text-xs text-slate-600 mt-1.5">Responsable directo de la conducción segura, cuidado del equipo asignado y cumplimiento estricto de normas de tránsito.</p>
+                            </button>
+
+                            <!-- R662 -->
+                            <button onclick="showModal('R662 - Conductor y Personal con Rol de Conductor', '🚗', '<p><strong>¿A quién aplica?</strong> A colaboradores cuyo cargo principal no es ser conductor, pero conducen vehículos propios, rentados o de la empresa para cumplir funciones laborales.</p><ul class=\'list-disc pl-5 space-y-1.5 mt-2\'><li>Mantener al día su documentación personal y del vehículo (SOAT, Revisión Técnico-Mecánica, Licencia).</li><li>Realizar pruebas teórico-prácticas de conducción y evaluación psicosensométrica.</li><li>Reportar cualquier comparendo, incidente o condición insegura en sus desplazamientos.</li></ul>')" 
+                                class="text-left p-5 rounded-xl border-2 border-slate-200 hover:border-amber-400 hover:bg-amber-50/30 transition group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="bg-slate-900 text-amber-400 text-xs font-extrabold px-2.5 py-1 rounded-lg">Perfil R662</span>
+                                    <span class="text-xs text-blue-600 font-semibold group-hover:underline">Ver detalle →</span>
+                                </div>
+                                <h4 class="font-bold text-slate-900 text-base">Personal con Rol de Conductor</h4>
+                                <p class="text-xs text-slate-600 mt-1.5">Requisitos para trabajadores administrativos, técnicos o comerciales que conducen en misión laboral.</p>
+                            </button>
+
+                            <!-- R790 -->
+                            <button onclick="showModal('R790 - Personal con Rol en el PESV', '📋', '<p><strong>¿A quién aplica?</strong> A integrantes del Comité de Seguridad Vial, Líder del PESV, supervisores, personal de mantenimiento y brigadistas viales.</p><ul class=\'list-disc pl-5 space-y-1.5 mt-2\'><li>Gestionar y hacer seguimiento al Plan Anual de Trabajo del PESV.</li><li>Verificar el cumplimiento de mantenimientos preventivos y correctivos.</li><li>Liderar la investigación de siniestros viales y el cierre de acciones correctivas.</li><li>Fomentar la cultura de reporte y participación de los trabajadores.</li></ul>')" 
+                                class="text-left p-5 rounded-xl border-2 border-slate-200 hover:border-amber-400 hover:bg-amber-50/30 transition group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="bg-slate-900 text-amber-400 text-xs font-extrabold px-2.5 py-1 rounded-lg">Perfil R790</span>
+                                    <span class="text-xs text-blue-600 font-semibold group-hover:underline">Ver detalle →</span>
+                                </div>
+                                <h4 class="font-bold text-slate-900 text-base">Personal con Rol en PESV</h4>
+                                <p class="text-xs text-slate-600 mt-1.5">Requisitos para líderes, comité, supervisores y encargados de gestionar y vigilar la seguridad vial.</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // MÓDULO 2: Los 5 Pilares de Prevención
+        function getModule2HTML() {
+            const cardsHTML = pillarsData.map((p, index) => `
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition hover:shadow-md">
+                    <button onclick="togglePillar(${index})" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-2xl flex-shrink-0">
+                                ${p.icon}
+                            </div>
+                            <div>
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <h3 class="font-bold text-slate-900 text-base sm:text-lg">${p.title}</h3>
+                                    <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">${p.badge}</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-600 mt-1">${p.summary}</p>
+                            </div>
+                        </div>
+                        <div class="text-slate-400 flex-shrink-0">
+                            <svg id="pillar-arrow-${index}" class="w-6 h-6 transform transition-transform duration-200 ${index === 0 ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="pillar-content-${index}" class="${index === 0 ? '' : 'hidden'} px-5 pb-5 pt-2 border-t border-slate-100 bg-slate-50/60">
+                        <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">¿Cómo lo aplicamos en el día a día?</p>
+                        <ul class="space-y-2">
+                            ${p.details.map(item => `
+                                <li class="flex items-start gap-2.5 text-sm text-slate-700">
+                                    <span class="text-emerald-600 font-bold mt-0.5">✔</span>
+                                    <span>${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-3 py-1 rounded-full">Módulo 2 • Programas de Gestión de Riesgos Críticos</span>
+                        <h2 class="text-2xl font-extrabold text-slate-900 mt-2">Los 5 Pilares de Prevención Vial</h2>
+                        <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                            La mayoría de los siniestros viales son evitables si controlamos estos <strong>5 factores de desempeño</strong>. Haz clic en cada tarjeta para desplegar las reglas de oro:
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        ${cardsHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function togglePillar(index) {
+            const content = document.getElementById(`pillar-content-${index}`);
+            const arrow = document.getElementById(`pillar-arrow-${index}`);
+            content.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        // MÓDULO 3: Tu Rutina Segura en la Operación
+        function getModule3HTML() {
+            const checkItems = [
+                { key: 'doc', label: 'Documentos al día (Licencia, SOAT, Revisión Técnico-Mecánica y tarjeta de propiedad).' },
+                { key: 'llantas', label: 'Llantas en buen estado (labrado adecuado, sin cortaduras y presión correcta).' },
+                { key: 'luces', label: 'Luces, direccionales, frenos, pito y limpiaparabrisas funcionando al 100%.' },
+                { key: 'descanso', label: 'Descanso adecuado cumplido (Protocolo P369) y cero consumo de alcohol/sustancias.' },
+                { key: 'ruta', label: 'Ruta planificada (identificando puntos críticos y vías seguras administradas).' },
+                { key: 'cinturon', label: 'Cinturón de seguridad abrochado para todos los ocupantes y equipo de carretera completo.' }
+            ];
+
+            const completedCount = Object.values(state.checklist).filter(Boolean).length;
+
+            return `
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">Módulo 3 • Operación Diaria</span>
+                        <h2 class="text-2xl font-extrabold text-slate-900 mt-2">Tu Rutina Segura en la Operación</h2>
+                        <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                            Antes, durante y después de cada desplazamiento laboral, seguimos controles claros para asegurar que tanto tú como tu vehículo estén en óptimas condiciones.
+                        </p>
+
+                        <!-- Grid de Controles Operativos -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                                <div class="text-xl mb-1.5">🗺️</div>
+                                <h3 class="font-bold text-slate-900 text-sm">Planificación de Desplazamientos</h3>
+                                <p class="text-xs text-slate-600 mt-1">Definimos horarios realistas, rutas autorizadas, zonas de descanso y condiciones climáticas antes de salir.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                                <div class="text-xl mb-1.5">🔧</div>
+                                <h3 class="font-bold text-slate-900 text-sm">Inspección Preoperacional y Mantenimiento</h3>
+                                <p class="text-xs text-slate-600 mt-1">Revisión diaria obligatoria antes de arrancar, respaldada por un plan riguroso de mantenimiento preventivo y correctivo.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                                <div class="text-xl mb-1.5">🪪</div>
+                                <h3 class="font-bold text-slate-900 text-sm">Control Documental y Pruebas</h3>
+                                <p class="text-xs text-slate-600 mt-1">Verificación periódica de licencias, multas (SIMIT), exámenes médicos y <strong>pruebas psicosensométricas</strong> (visión, audición, coordinación).</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                                <div class="text-xl mb-1.5">🛣️</div>
+                                <h3 class="font-bold text-slate-900 text-sm">Vías Seguras Administradas</h3>
+                                <p class="text-xs text-slate-600 mt-1">En nuestras sedes y frentes de obra garantizamos señalización clara, senderos peatonales separados y control de velocidad interna.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 sm:col-span-2">
+                                <div class="text-xl mb-1.5">📢</div>
+                                <h3 class="font-bold text-slate-900 text-sm">Reporte de Condiciones y Comportamientos Seguros</h3>
+                                <p class="text-xs text-slate-600 mt-1">¡Tu voz cuenta! Reporta de inmediato cualquier falla mecánica, daño en la vía o acto inseguro. También reconocemos y felicitamos los buenos hábitos al volante.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checklist Interactivo -->
+                    <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-lg border border-slate-800">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <h3 class="text-lg font-extrabold text-amber-400 flex items-center gap-2">
+                                    <span>✅</span> Checklist Interactivo: "Antes de Arrancar"
+                                </h3>
+                                <p class="text-xs text-slate-300 mt-0.5">Marca cada verificación para simular tu inspección preoperacional diaria:</p>
+                            </div>
+                            <span id="checklist-badge" class="text-xs font-bold px-3 py-1.5 rounded-xl ${completedCount === 6 ? 'bg-emerald-500 text-slate-900' : 'bg-slate-800 text-amber-400 border border-slate-700'}">
+                                ${completedCount} / 6 Verificados
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            ${checkItems.map(item => `
+                                <label onclick="toggleChecklist('${item.key}')" 
+                                    class="flex items-start gap-3 p-3.5 rounded-xl border cursor-pointer transition select-none
+                                    ${state.checklist[item.key] 
+                                        ? 'bg-emerald-950/60 border-emerald-500/60 text-white' 
+                                        : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:border-slate-500'}">
+                                    <div class="mt-0.5 w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0 border
+                                        ${state.checklist[item.key] ? 'bg-emerald-500 border-emerald-500 text-slate-900' : 'border-slate-500'}">
+                                        ${state.checklist[item.key] ? '✓' : ''}
+                                    </div>
+                                    <span class="text-xs sm:text-sm leading-snug">${item.label}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+
+                        ${completedCount === 6 ? `
+                            <div class="mt-4 p-3.5 rounded-xl bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-xs sm:text-sm font-semibold flex items-center gap-2 fade-in">
+                                <span>🎉</span> ¡Excelente! Has completado tu chequeo preoperacional. Estás listo para un viaje seguro.
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleChecklist(key) {
+            state.checklist[key] = !state.checklist[key];
+            renderModule(2);
+        }
+
+        // MÓDULO 4: ¿Qué hacer en caso de emergencia o siniestro?
+        function getModule4HTML() {
+            const currentStep = emergencySteps[state.emergencyStep];
+
+            return `
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                        <span class="text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-3 py-1 rounded-full">Módulo 4 • Respuesta ante Emergencias</span>
+                        <h2 class="text-2xl font-extrabold text-slate-900 mt-2">¿Qué hacer en caso de emergencia o siniestro vial?</h2>
+                        <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                            Estar preparados salva vidas. Contamos con un <strong>Plan de Prevención, Preparación y Respuesta ante Emergencias</strong>, el <strong>PON (Plan Operativo Normalizado)</strong>, brigadistas capacitados como <strong>Primer Respondiente</strong> y el <strong>Anexo 4 (Práctica Segura en Siniestro Vial)</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Simulador Paso a Paso Interactivo -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border-2 border-rose-100">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+                            <h3 class="text-lg font-extrabold text-slate-900">Guía Interactiva de Actuación (Paso a Paso)</h3>
+                            <span class="text-xs font-semibold text-rose-700 bg-rose-50 px-3 py-1 rounded-lg">Haz clic en cada paso</span>
+                        </div>
+
+                        <!-- Selector de Pasos -->
+                        <div class="grid grid-cols-5 gap-2 mb-6">
+                            ${emergencySteps.map((s, idx) => `
+                                <button onclick="setEmergencyStep(${idx})" 
+                                    class="py-2.5 px-2 rounded-xl text-center font-bold text-xs sm:text-sm transition border-2
+                                    ${state.emergencyStep === idx 
+                                        ? 'bg-rose-600 text-white border-rose-600 shadow-sm' 
+                                        : 'bg-slate-50 text-slate-600 border-slate-200 hover:border-rose-300'}">
+                                    Paso ${idx + 1}
+                                </button>
+                            `).join('')}
+                        </div>
+
+                        <!-- Tarjeta del Paso Activo -->
+                        <div class="bg-slate-900 text-white rounded-2xl p-6 flex flex-col sm:flex-row items-start gap-5 fade-in">
+                            <div class="text-4xl bg-rose-500/20 border border-rose-500/40 p-4 rounded-2xl flex-shrink-0">
+                                ${currentStep.icon}
+                            </div>
+                            <div class="space-y-2">
+                                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Protocolo PON & Anexo 4</span>
+                                <h4 class="text-xl font-extrabold text-white">${currentStep.step}</h4>
+                                <p class="text-sm text-slate-300 leading-relaxed">${currentStep.desc}</p>
+                            </div>
+                        </div>
+
+                        <!-- Recordatorio Importante -->
+                        <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-amber-50 border border-amber-200">
+                                <h4 class="font-bold text-amber-900 text-sm flex items-center gap-2">
+                                    <span>🩺</span> Rol del Primer Respondiente
+                                </h4>
+                                <p class="text-xs text-amber-800 mt-1 leading-relaxed">
+                                    Es la primera persona que llega a la escena y activa el sistema de emergencias, asegura el área y brinda primeros auxilios básicos sin poner en riesgo su propia vida.
+                                </p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-blue-50 border border-blue-200">
+                                <h4 class="font-bold text-blue-900 text-sm flex items-center gap-2">
+                                    <span>🔍</span> Investigación Interna de Siniestros
+                                </h4>
+                                <p class="text-xs text-blue-800 mt-1 leading-relaxed">
+                                    Todo incidente o siniestro vial (leve o grave) debe reportarse para ser investigado y extraer lecciones aprendidas que protejan a todos los compañeros.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function setEmergencyStep(idx) {
+            state.emergencyStep = idx;
+            renderModule(3);
+        }
+
+        // MÓDULO 5: Seguimiento, Mejora y Participación
+        function getModule5HTML() {
+            const items = [
+                {
+                    icon: "🎯",
+                    title: "Diagnóstico y Evaluación de Riesgos Viales",
+                    desc: "Identificamos los peligros en las rutas, vehículos y hábitos para valorar los riesgos viales y definir objetivos y metas claras de reducción."
+                },
+                {
+                    icon: "📅",
+                    title: "Plan Anual de Trabajo y Formación",
+                    desc: "Cada año ejecutamos un cronograma de capacitaciones prácticas, campañas de sensibilización y fortalecimiento de competencias para todos."
+                },
+                {
+                    icon: "📈",
+                    title: "Indicadores, Estadísticas y Autogestión",
+                    desc: "Medimos nuestro desempeño con indicadores de gestión, registro estadístico de siniestros y reportes de autogestión ante las autoridades."
+                },
+                {
+                    icon: "🔎",
+                    title: "Auditoría Anual y Mejora Continua",
+                    desc: "Realizamos una auditoría anual al PESV para verificar que todo funcione y aplicamos acciones preventivas y correctivas para mejorar cada día."
+                },
+                {
+                    icon: "🏗️",
+                    title: "Gestión del Cambio y Contratistas",
+                    desc: "Si ingresan nuevos vehículos, rutas, tecnologías o empresas contratistas, evaluamos los riesgos antes de operar y exigimos cumplir nuestro PESV."
+                },
+                {
+                    icon: "💬",
+                    title: "Comunicación, Participación y Archivo",
+                    desc: "Contamos con una Matriz de Comunicación y Consulta abierta para escuchar tus ideas, y custodiamos toda la documentación según la retención documental."
+                }
+            ];
+
+            return `
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                        <span class="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full">Módulo 5 • Gestión y Cultura</span>
+                        <h2 class="text-2xl font-extrabold text-slate-900 mt-2">Seguimiento, Mejora Continua y Participación</h2>
+                        <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                            Un Plan Estratégico de Seguridad Vial está vivo. Así es como medimos, auditamos y mejoramos continuamente nuestro sistema con tu participación:
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                            ${items.map(item => `
+                                <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 hover:border-indigo-300 transition">
+                                    <div class="text-2xl mb-2">${item.icon}</div>
+                                    <h3 class="font-bold text-slate-900 text-sm">${item.title}</h3>
+                                    <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">${item.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Llamado a la participación -->
+                    <div class="bg-gradient-to-r from-emerald-800 to-teal-900 text-white rounded-2xl p-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <h3 class="text-lg font-bold text-amber-300">¡Tu participación hace la diferencia!</h3>
+                            <p class="text-sm text-emerald-100">
+                                Utiliza nuestros canales de comunicación y consulta para proponer mejoras en rutas, horarios o seguridad de los vehículos.
+                            </p>
+                        </div>
+                        <button onclick="switchTab(5)" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold text-sm px-5 py-3 rounded-xl shadow transition flex-shrink-0">
+                            Ir a la Trivia Final 🏆
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // MÓDULO 6: Evaluación Rápida / Trivia y Constancia
+        function getModule6HTML() {
+            let score = 0;
+            if (state.quizSubmitted) {
+                quizQuestions.forEach((q, idx) => {
+                    if (state.quizAnswers[idx] === q.correct) score++;
+                });
+            }
+
+            const allAnswered = Object.keys(state.quizAnswers).length === quizQuestions.length;
+
+            return `
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 no-print">
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-3 py-1 rounded-full">Módulo 6 • Verificación de Aprendizaje</span>
+                        <h2 class="text-2xl font-extrabold text-slate-900 mt-2">Trivia Rápida de Seguridad Vial</h2>
+                        <p class="text-slate-600 mt-1 text-sm">
+                            Responde estas 5 preguntas clave sobre el PESV (PL40) para validar tu comprensión y generar tu constancia de divulgación.
+                        </p>
+                    </div>
+
+                    <!-- Preguntas -->
+                    <div class="space-y-4 no-print">
+                        ${quizQuestions.map((q, qIdx) => {
+                            const selected = state.quizAnswers[qIdx];
+                            return `
+                                <div class="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                                    <h3 class="font-bold text-slate-900 text-sm sm:text-base mb-3">${q.q}</h3>
+                                    <div class="space-y-2">
+                                        ${q.options.map((opt, oIdx) => {
+                                            let btnStyle = "border-slate-200 hover:bg-slate-50 text-slate-700";
+                                            if (state.quizSubmitted) {
+                                                if (oIdx === q.correct) {
+                                                    btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                                                } else if (selected === oIdx && oIdx !== q.correct) {
+                                                    btnStyle = "bg-rose-50 border-rose-500 text-rose-900";
+                                                } else {
+                                                    btnStyle = "border-slate-200 opacity-60";
+                                                }
+                                            } else if (selected === oIdx) {
+                                                btnStyle = "bg-blue-50 border-blue-600 text-blue-900 font-semibold";
+                                            }
+
+                                            return `
+                                                <button onclick="selectAnswer(${qIdx}, ${oIdx})" ${state.quizSubmitted ? 'disabled' : ''}
+                                                    class="w-full text-left p-3.5 rounded-xl border-2 text-xs sm:text-sm transition flex items-center justify-between gap-3 ${btnStyle}">
+                                                    <span>${opt}</span>
+                                                    ${state.quizSubmitted && oIdx === q.correct ? '<span class="text-emerald-600 font-bold">✔</span>' : ''}
+                                                    ${state.quizSubmitted && selected === oIdx && oIdx !== q.correct ? '<span class="text-rose-600 font-bold">✘</span>' : ''}
+                                                </button>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                    ${state.quizSubmitted ? `
+                                        <div class="mt-3 p-3 rounded-xl text-xs ${selected === q.correct ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-amber-50 text-amber-900 border border-amber-200'}">
+                                            ${q.explanation}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    <!-- Botón Enviar / Reiniciar -->
+                    <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm no-print">
+                        <div>
+                            <p class="text-sm font-bold text-slate-800">
+                                ${state.quizSubmitted 
+                                    ? `Resultado obtenido: ${score} de ${quizQuestions.length} respuestas correctas (${Math.round((score/quizQuestions.length)*100)}%)` 
+                                    : `Has respondido ${Object.keys(state.quizAnswers).length} de ${quizQuestions.length} preguntas`}
+                            </p>
+                            <p class="text-xs text-slate-500">Completa todas las preguntas para verificar tus respuestas y generar tu constancia.</p>
+                        </div>
+                        <div class="flex gap-3">
+                            ${state.quizSubmitted ? `
+                                <button onclick="resetQuiz()" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-50 transition">
+                                    Intentar de nuevo
+                                </button>
+                            ` : `
+                                <button onclick="submitQuiz()" ${!allAnswered ? 'disabled' : ''}
+                                    class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold text-sm shadow transition">
+                                    Calificar Trivia
+                                </button>
+                            `}
+                        </div>
+                    </div>
+
+                    <!-- CONSTANCIA / CERTIFICADO VISUAL -->
+                    ${state.quizSubmitted ? `
+                        <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-4 border-double border-slate-800 fade-in">
+                            <div class="no-print mb-6 pb-6 border-b border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Escribe tu Nombre Completo:</label>
+                                    <input type="text" value="${state.workerName}" oninput="updateWorkerInfo('name', this.value)" placeholder="Ej. Carlos Andrés Gómez"
+                                        class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-blue-600">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Selecciona tu Perfil / Rol:</label>
+                                    <select onchange="updateWorkerInfo('role', this.value)"
+                                        class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-blue-600 bg-white">
+                                        <option value="R96 - Conductor Operario" ${state.workerRole === 'R96 - Conductor Operario' ? 'selected' : ''}>R96 - Conductor Operario</option>
+                                        <option value="R662 - Personal con Rol de Conductor" ${state.workerRole === 'R662 - Personal con Rol de Conductor' ? 'selected' : ''}>R662 - Personal con Rol de Conductor</option>
+                                        <option value="R790 - Personal con Rol en PESV" ${state.workerRole === 'R790 - Personal con Rol en PESV' ? 'selected' : ''}>R790 - Personal con Rol en PESV</option>
+                                        <option value="Colaborador / Actor Vial" ${state.workerRole === 'Colaborador / Actor Vial' ? 'selected' : ''}>Colaborador / Actor Vial</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Diseño del Certificado -->
+                            <div class="text-center space-y-4 py-4">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-100 text-amber-600 text-3xl mb-1">
+                                    🏅
+                                </div>
+                                <p class="text-xs font-extrabold uppercase tracking-[0.2em] text-slate-500">Constancia de Participación y Divulgación</p>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Plan Estratégico de Seguridad Vial (PL40)</h3>
+                                <p class="text-sm text-slate-600">Se hace constar que el colaborador(a):</p>
+                                
+                                <div class="py-2">
+                                    <p id="cert-name-display" class="text-2xl sm:text-3xl font-extrabold text-blue-900 border-b-2 border-slate-300 inline-block px-8 pb-1">
+                                        ${state.workerName.trim() || 'NOMBRE DEL TRABAJADOR'}
+                                    </p>
+                                    <p id="cert-role-display" class="text-xs font-bold text-slate-600 mt-2 uppercase tracking-wider">
+                                        Perfil: ${state.workerRole}
+                                    </p>
+                                </div>
+
+                                <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                                    Completó satisfactoriamente la jornada de divulgación del <strong>PESV (PL40)</strong> y sus anexos: Programas de Gestión de Riesgos Críticos, Protocolo P369 (Prevención de Fatiga), PON y Anexo 4 (Práctica Segura en Siniestro Vial), obteniendo un puntaje de <strong>${score}/${quizQuestions.length}</strong>.
+                                </p>
+
+                                <div class="pt-6 flex flex-col sm:flex-row justify-center items-center gap-6 text-xs text-slate-500">
+                                    <div>
+                                        <p class="font-bold text-slate-800">Fecha de Divulgación</p>
+                                        <p>${new Date().toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                    </div>
+                                    <div class="hidden sm:block h-8 w-px bg-slate-300"></div>
+                                    <div>
+                                        <p class="font-bold text-slate-800">Compromiso Vial</p>
+                                        <p class="text-emerald-700 font-semibold">Cero Siniestros • Seguridad Primero</p>
+                                    </div>
+                                </div>
+
+                                <div class="pt-6 no-print">
+                                    <button onclick="window.print()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm px-6 py-3 rounded-xl shadow inline-flex items-center gap-2 transition">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                                        Imprimir o Guardar Constancia en PDF
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        function selectAnswer(qIdx, oIdx) {
+            if (state.quizSubmitted) return;
+            state.quizAnswers[qIdx] = oIdx;
+            renderModule(5);
+        }
+
+        function submitQuiz() {
+            state.quizSubmitted = true;
+            renderModule(5);
+        }
+
+        function resetQuiz() {
+            state.quizAnswers = {};
+            state.quizSubmitted = false;
+            renderModule(5);
+        }
+
+        function updateWorkerInfo(field, value) {
+            if (field === 'name') {
+                state.workerName = value;
+                const el = document.getElementById('cert-name-display');
+                if (el) el.textContent = value.trim() || 'NOMBRE DEL TRABAJADOR';
+            } else if (field === 'role') {
+                state.workerRole = value;
+                const el = document.getElementById('cert-role-display');
+                if (el) el.textContent = `Perfil: ${value}`;
+            }
+        }
+
+        // Inicializar aplicación al cargar
+        window.onload = init;
+    </script>
+</body>
+</html>
